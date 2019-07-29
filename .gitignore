@@ -1,0 +1,3 @@
+#Saco los pychache y los .pyc
+*.pyc
+__pycache__
