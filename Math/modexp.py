@@ -11,3 +11,8 @@ def modexp( x, y, p ):
 		x*= x
 
 	return res%p
+
+
+
+"""Inverso si m es primo"""
+modinv = lambda a, m : modexp(a, m-2, m)

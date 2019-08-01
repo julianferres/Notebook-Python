@@ -7,3 +7,11 @@ def gcd(a, b):
     x = y1-(b//a)*x1
     y = x1
     return d, x, y
+
+
+def modinv(a, m):
+    g, x, y = gcd(a,m)
+    if(g!=1):
+        return None
+    x = (x%m + m)%m
+    return x
