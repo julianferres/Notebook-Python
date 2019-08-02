@@ -1,9 +1,9 @@
-class UnionFind:
-    def __init__(self, n):
-        self.parent = [i for i in range(n + 1)]
-        self.rank = [0 for _ in range(n + 1)]
-        self.size = [1] * (n + 1)
-        self.group = [[i] for i in range(n + 1)]
+class DisjointSetUnion:
+    def __init__(self, array):
+        self.parent = [i for i in array]
+        self.rank = [0 for _ in range(len(array))]
+        self.size = [1] * (len(array) + 1)
+        self.group = [[a[i]] for i in array]
 
     def find(self, x):
         # If x is root
