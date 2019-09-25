@@ -69,7 +69,7 @@ class SegmentTreeGeneric:
     def __init__(self, array, f):
         self.n = len(array)
         self.t = [0]*self.n + array
-        self.f = f #Me guardo la funcion aca para los otros métodos
+        self.f = f #Me guardo la funcion aca para los otros metodos
 
         for i in range(self.n-1, 0, -1):
             self.t[i] = self.f(self.t[i<<1],self.t[(i<<1)|1])

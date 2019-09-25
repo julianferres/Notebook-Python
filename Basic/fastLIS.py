@@ -20,4 +20,3 @@ def LIS(arr):
     aux = [piles[i][::-1] for i in range(len(piles))]
     orden = list(heapq.merge(*aux))
     print(orden)
-LIS([6,3,5,10,11,2,9,14,13,7,4,8,12])
