@@ -1,19 +1,22 @@
-from math import sqrt
+from functools import reduce
+def convex_hull_graham(points):
+    TURN_LEFT, TURN_RIGHT, COLLINEAR = (1, -1, 0)
+    def cmp(a, b):
+        return (a > b) - (a < b)
 
-pivot 
-def area( p, q, r ):
-	"""Recibe tres puntos en orden y devuelve el area 
-		(positiva o negativa) que describen"""
-	
-	return a[0]*b[1]-a[1]*b[0]+b[0]*c[1]-b[1]*c[0]+c[0]*a[1]-c[1]*a[0]
+    def turn(p, q, r):
+        return cmp((q[0] - p[0])*(r[1] - p[1]) - (r[0] - p[0])*(q[1] - p[1]), 0)
 
-def dist2( a, b ):
-	"""Recibe dos puntos (2D) y calcula la distancia entre ellos"""
-	dx, dy = b[0]-a[0], b[1]-a[1]
-	
-	return dx**2+dy**2
+    def _keep_left(hull, r):
+        while len(hull) > 1 and turn(hull[-2], hull[-1], r) not in {TURN_LEFT}:
+        	#Agregar a {TURN_LEFT} el elemento COLLINEAR si se quieren alineados en
+        	#En la frontera
+            hull.pop()
+        if not len(hull) or hull[-1] != r:
+            hull.append(r)
+        return hull
 
-def angle_cmp( a, b):
-	"""Funcion importante de angle sorting."""
-	if(area2(pivot, a, b)
-	
+    points = sorted(points)
+    l = reduce(_keep_left, points, [])
+    u = reduce(_keep_left, reversed(points), [])
+    return l.extend(u[i] for i in range(1, len(u) - 1)) or l
