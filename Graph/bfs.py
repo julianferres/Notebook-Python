@@ -1,21 +1,28 @@
 from collections import deque
+def bfs(ady, s):
+	vis = set()
+	parent = {}; dist = {}
 
-empty_queue = lambda q: len(q)==0
+	q = deque([])
+	q.append(s); vis.add(s); parent[s]=-1; dist[s]=0
 
-def bfs(graph, root, visited = set()):
-    travel = []
-    q = deque([])
+	while q:
+		v = q.popleft()
+		for u in ady[v]:
+			if u not in vis:
+				vis.add(u)
+				q.append(u)
+				dist[u] = dist[v]+1
+				parent[u] = v
+	return vis,parent,dist
 
-    q.append(root)
-    visited.add(root)
-
-    while( not empty_queue(q) ):
-
-        actNode = q.popleft() #Dequeue
-        travel.append(actNode)
-        for adyacent in graph[actNode]:
-            if(adyacent not in visited):
-                q.append(adyacent) #Enqueue adyacent
-                visited.add(adyacent)
-
-    return travel
+def SSSP(ady, src, dst):
+	"""Single-source shortest path"""
+	vis, par , dist = bfs(ady,src)
+	path = []
+	if(dst not in vis): return path
+	while(dst!=src):
+		path.append(dst)
+		dst = par[dst]
+	path.append(src)
+	return path[::-1]

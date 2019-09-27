@@ -1,13 +1,7 @@
-def rec_dfs(graph , node , visited):
-
-	if node not in visited:
-		visited.append(node)
-
-		for ady in graph[node]:
-			dfs_rec(graph , ady , visited)
-
-
-def dfs(graph , node):
-	visited = []
-	rec_dfs(graph , node , visited)
-	print(visited)
+visited = set()
+orden = []
+def dfs(ady , v):
+	orden.append(v); visited.add(v)
+	for u in ady[v]:
+		if u not in visited:
+			dfs(ady,u)
