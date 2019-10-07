@@ -36,7 +36,7 @@
 \pyfile{Graph/Dijkstra.py}
 \subsection{Floyd-Warshall}
 \pyfile{Graph/floydwarshall.py}
-\subsection{Max Flow (Ford Fulkerson)}
+\subsection{Max Flow-Min Cut (Ford Fulkerson)}
 \pyfile{Graph/flow.py}
 
 
@@ -62,8 +62,11 @@ $\sum_{i=1}^n F_i = F_{n+2}-1$
 
 $F_{n+i}F_{n+j} - F_nF_{n+i+j} = (-1)^n F_iF_j$
 
+$\sum_{i=1}^{n} i^k = \frac{1}{k+1}(\sum_{j=1}^{k+1}\binom{k+1}{j}n^j-\sum_{j=0}^{k-1}\binom{k+1}{j}i^j)$
+$S_k(n)= \frac{1}{k+1}((n+1)^{k+1}-1-(\sum_{j=2}^{k+1}\binom{k+1}{j}S_{k+1-j}(n)))$
+
 (Möbius Inv. Formula)
-Let $g(n) = \sum_{d\mid n} f(d)$, then $f(n)=\sum{d\mid n} g(d) \mu\left(\frac{n}{d})\right)$.
+Let $g(n) = \sum_{d\mid n} f(d)$, then $f(n)=\sum_{d\mid n} g(d) \mu\left(\frac{n}{d}\right)$.
 }
 \subsection{GCD}
 \pyfile{Math/gcd.py}
